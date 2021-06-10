@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="fm">
+      <label for="Email">EMAIL</label>
+      <input type="email"  id ="email"placeholder="Enter your Email" />
+      <label for="Password">PASSWORD</label>
+      <input type="password"  id ="password" placeholder="Enter your password" />
+      <button onclick="log(event)" id="enter">Login</button>
+    </form>
+  </body>
+</html>
+<script>
+         let chk = JSON.parse(localStorage.getItem("signup"));
+
+  function log(e) {
+        e.preventDefault();
+       let f_data = document.getElementById("fm")
+       let em = f_data.email.value;
+              let pd = f_data.password.value;
+              
+            console.log(em.length)
+              var count=0;
+ for(var i=0;i<chk.length;i++){             
+if(chk[i].email==em && chk[i].password==pd){
+         console.log(chk[i].email,chk[i].password)
+            
+  alert("Login Succesful")
+ count++;
+ window.location.href="/personal/Ninjas2/Week_9/ticket_op"
+}
+if(em.length==0|| pd.length==0){
+    alert("Email or Password Field Empty")
+
+}
+else if(count<1){
+  alert("Wrong Email or Password")}
+
+ }
+
+
+  }
+</script>
