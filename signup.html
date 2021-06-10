@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="fm">
+      <label for="Email">EMAIL</label>
+      <input type="email" id="em" placeholder="Enter your Email" />
+      <label for="Password">PASSWORD</label>
+      <input type="password" id="password" placeholder="Enter your password" />
+      <button onclick="signp(event)" id="enter">Signup</button>
+    </form>
+    <div id="main"></div>
+  </body>
+</html>
+<script>
+  function signp(e) {
+    e.preventDefault();
+    let data = document.getElementById("fm");
+    let email = data.em.value;
+
+    let password = data.password.value;
+
+    let parent = document.getElementById("main");
+    var locsgp = {
+      email,
+      password,
+    };
+    let arr;
+
+    arr = localStorage.getItem("signup");
+    if (arr == null) {
+      arr = [];
+    } else {
+      arr = JSON.parse(localStorage.getItem("signup"));
+    }
+    arr.push(locsgp);
+    localStorage.setItem("signup", JSON.stringify(arr));
+  }
+</script>
