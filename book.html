@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          #parent{
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        margin-left: 100px;
+        
+      }
+      body{
+       background-color: honeydew;
+      }
+      #final{
+       width: 200px;
+       background-color: hotpink;
+       margin-top: 200px;
+margin-left:580px   
+ }
+
+    </style>
+</head>
+<body>
+    <div id ="parent"></div>
+        <button  id="final" onclick="subme()">BOOK</button>
+
+</body>
+</html>
+<script>
+    let dat = JSON.parse(localStorage.getItem('book'))
+let pr = document.getElementById("parent")
+pr.innerHTML=null;
+dat.forEach(function(ele) {
+        let div = document.createElement("div");
+      let image = document.createElement("img");
+      image.src = ele.image;
+      let price = document.createElement("p");
+      price.innerHTML = `Price: ${ele.price}`;
+
+      let desc = document.createElement("p");
+      desc.innerHTML = ele.description;
+
+      let time = document.createElement("p");
+      time.innerHTML = ele.time_tp;
+      
+       div.append(image, price, desc, time);
+      pr.append(div);
+    });
+    function subme(){
+        alert("Your booking is in progress")
+  setTimeout(function(){
+    alert("Your payment has been received")
+  },3000)
+   setTimeout(function(){
+    alert("Preparing your ticket")
+  },8000)
+   setTimeout(function(){
+    alert("Booking Successful")
+  },10000)
+}
+</script>
